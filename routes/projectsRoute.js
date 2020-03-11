@@ -4,6 +4,9 @@ router = express.Router()
 const db = require('../data/config');
 
 router.get("/", async (req, res, next) =>{
+    if(!req.body.name){
+        res.json(`The Database is Empty. You need to post a Project`)
+    }
     try{
         res.json(await db("projects"))
     }
@@ -14,13 +17,10 @@ router.get("/", async (req, res, next) =>{
 
 router.post("/", async (req, res, next) => {
     try{
-        const { id } = req.params.id;
-        res.json({
-            "id": id,
-            "name": "",
-            "description": "",
-            "completed": ""
-        })
+       return  res.status(201).json(await db("projects").insert({ 
+        "name": req.body.name,
+    "description": req.body.description,}
+ ))
     }
     catch(err){
         next(err)

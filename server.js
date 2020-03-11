@@ -2,14 +2,14 @@ const express = require('express');
 const server = express()
 
 const projectsRoute = require('./routes/projectsRoute');
-// const resourcesRoute = require('./routes/resources-route')
-// const tasksRoute = require('./routes/tasks-route')
+const resourcesRoute = require('./routes/resourcesRoute')
+const tasksRoute = require('./routes/tasksRoute')
 
 server.use(express.json())
 
 server.use('/projects', projectsRoute)
-// server.use('/resources', resourcesRoute)
-// server.use('/projects/:id', tasksRoute)
+server.use('/resources', resourcesRoute)
+server.use('/projects/:id', tasksRoute)
 
 server.use((err, req, res, next) => {
 	console.log(err)

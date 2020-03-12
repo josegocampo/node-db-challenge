@@ -17,14 +17,15 @@ router.get('/resources', async (req, res, next)=>{
     }
 })
 
-router.post('/resources', async (req, res, next)=>{
-    try{
-        const postr = await db('resources')
-        .insert({
+router.post('/resources', async (req, res, next) =>{
+    const payload = {
             name: req.body.name,
             description: req.body.description,
             project_id: req.body.project_id
-        })
+    }
+    try{
+        const postr = await db('resources')
+        .insert(payload)
         res.json(postr)
     
     }

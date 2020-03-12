@@ -15,15 +15,15 @@ exports.up = async function(knex) {
 	})
 
 	await knex.schema.createTable("resources", (table) => {
-		table.increments("id")
-        table.text("name").notNull()
+		table.increments('id')
+        table.text('name').notNull()
 		table.text('description')
 		table.integer('project_id').references('id').inTable('projects').notNull();
 	})
 	
 	await knex.schema.createTable("project_resources", (table) => {
-		table.integer('project_id').notNull().references('id').inTable('projects')
-		table.integer('resource_id').notNullable().references('id').inTable('resources')
+		table.integer('project_id').references('id').inTable('projects')
+		table.integer('resource_id').references('id').inTable('resources')
 	
 	table.primary([ 'project_id', 'resource_id' ]);
 	})}

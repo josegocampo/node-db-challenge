@@ -1,9 +1,9 @@
 const express = require('express');
 const server = express()
 
-const projectsRoute = require('./routes/projectsRoute');
-const resourcesRoute = require('./routes/resourcesRoute')
-const tasksRoute = require('./routes/tasksRoute')
+const projectsRoute = require('./routes/projects-route');
+const resourcesRoute = require('./routes/resources-route')
+const tasksRoute = require('./routes/tasks-route')
 
 server.use(express.json())
 

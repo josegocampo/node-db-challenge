@@ -6,7 +6,7 @@ async function getAll(){
     };
 
 async function getById(id){
-        const projects = await db.table("projects")
+        const projects = await db.table('projects')
         .where('projects.id', id)
         return projects
     }
@@ -20,8 +20,9 @@ async function insert(data){
     }
 
 
+
     module.exports = {
         getAll,
         getById,
-        insert
+        insert,
     };

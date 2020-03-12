@@ -18,16 +18,13 @@ exports.up = async function(knex) {
 		table.increments("id")
         table.text("name").notNull()
         table.text('description')
-
 	})
 	
 	await knex.schema.createTable("project_resources", (table) => {
 		table.increments("id")
         table.integer("resource_id").references('id').inTable('resources')
         table.integer('project_id').references('id').inTable('projects')
-	})
-
-}
+	})}
 
 exports.down = async function(knex) {
 	await knex.schema.dropTableIfExists("project_resources")

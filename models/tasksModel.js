@@ -16,8 +16,7 @@ async function insert(id, data){
                 description: data.description,
                 notes: data.notes,
                 project_id: id
-                
-            })   
+            })  
     }
 
 

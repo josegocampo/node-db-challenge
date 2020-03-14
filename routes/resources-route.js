@@ -10,7 +10,7 @@ router.get('/resources', async (req, res, next)=>{
         .join("projects as p", "p.id", "pr.project_id")
         .join("resources as r", "r.id", "pr.resource_id")
         .where("p.id", req.params.id)
-        .select("r.*")
+        .select("p.id")
         res.json(resources)
     } catch(err){
         next(err)

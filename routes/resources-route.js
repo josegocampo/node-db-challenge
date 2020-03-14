@@ -1,35 +1,21 @@
 const express = require('express')
-const router = express.Router({mergeParams: true});
+const router = express.Router();
 
-const db = require('../data/config')
+const db = require('../models/resourcesModel')
 
 
-router.get('/resources', async (req, res, next)=>{
+router.get('/', async (req, res, next)=>{
     try {
-        const resources = await db("project_resources as pr")
-        .join("projects as p", "p.id", "pr.project_id")
-        .join("resources as r", "r.id", "pr.resource_id")
-        .where("p.id", req.params.id)
-        .select("p.id")
-        res.json(resources)
+        res.json(await db.getAll())
     } catch(err){
         next(err)
     }
 })
 
-router.post('/resources', async (req, res, next) =>{
-    const payload = {
-            name: req.body.name,
-            description: req.body.description,
-            project_id: req.body.project_id
-    }
-    try{
-        const postr = await db('resources')
-        .insert(payload)
-        res.json(postr)
-    
-    }
-    catch(err){
+router.post('/', async (req, res, next) => {
+    try {
+        res.json(await db.insert(req.body))
+    } catch(err) {
         next(err)
     }
 })

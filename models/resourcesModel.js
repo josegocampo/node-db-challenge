@@ -10,6 +10,7 @@ async function getAll(){
         .insert({
             name: data.name,
             description: data.description,
+            project_id: data.project_id
         })
     }
 

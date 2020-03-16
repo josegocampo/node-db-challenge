@@ -1,18 +1,16 @@
 const db = require('../data/config');
 
+async function getRp(resourceId){
 
-async function getRp(id){
-        const pr = await db('project_resources')
-        .join('projects', 'projects.id' ,'resources.project_id')
-        .where('projects.id', id)
-        .select('project_resources.*', 'projects.name as project_name')
+    const pr = await db('resources')
+    .join('project_resources as pr', 'pr.resource_id', 'resources.res_id')
+    .join('projects as p', 'pr.project_id', 'p.id')
+    .where('resources.res_id', resourceId)
+    .select('p.name', 'p.id')
 
-        return pr
-    };
+    return pr
+};
 
-
-
-
-    module.exports = {
-        getRp
-    };
+module.exports = {
+    getRp
+};

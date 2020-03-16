@@ -11,7 +11,7 @@ server.use(express.json())
 server.use('/projects', projectsRoute)
 server.use('/resources', resourcesRoute)
 server.use('/projects/:id', tasksRoute)
-server.use('/projects/:id', rpRoute)
+server.use('/resources/:id/projects', rpRoute)
 
 server.use((err, req, res, next) => {
 	console.log(err)

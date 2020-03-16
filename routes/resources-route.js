@@ -13,8 +13,14 @@ router.get('/', async (req, res, next)=>{
 })
 
 router.post('/', async (req, res, next) => {
+    const projectId = req.body.project_id
+    const newRes = {
+       name: req.body.name,
+       description: req.body.description,
+     }
     try {
-        res.json(await db.insert(req.body))
+        await db.insert(newRes, projectId)
+        res.sendStatus(201)
     } catch(err) {
         next(err)
     }

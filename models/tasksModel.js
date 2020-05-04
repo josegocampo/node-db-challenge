@@ -10,7 +10,7 @@ async function getTasks(id){
         return tasks
     };
 
-async function insert(id, data){
+async function add(id, data){
         return await db('tasks')
             .insert({
                 description: data.description,
@@ -23,5 +23,5 @@ async function insert(id, data){
 
     module.exports = {
         getTasks,
-        insert
+        add
     };

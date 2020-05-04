@@ -11,7 +11,7 @@ async function getById(id){
         return projects
     }
 
-async function insert(data){
+async function add(data){
         return await db('projects')
         .insert({
             name: data.name,
@@ -24,5 +24,5 @@ async function insert(data){
     module.exports = {
         getAll,
         getById,
-        insert,
+        add,
     };

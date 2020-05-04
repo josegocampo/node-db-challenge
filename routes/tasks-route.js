@@ -14,7 +14,7 @@ router.get('/tasks', async (req, res, next)=>{
 })
 
 router.post('/tasks', async (req, res, next)=>{
-    res.json(await db.insert(req.params.id, req.body))
+    res.json(await db.add(req.params.id, req.body))
 })
 
 module.exports = router;

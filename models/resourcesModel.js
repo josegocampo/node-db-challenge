@@ -5,7 +5,7 @@ async function getAll(){
         return await db.table('resources')
     };
 
-async function insert(newRes, projectId){
+async function add(newRes, projectId){
   const [resourceId] = await db('resources')
     .insert(newRes)
   
@@ -19,5 +19,5 @@ async function insert(newRes, projectId){
 
 module.exports = {
     getAll,
-    insert
+    add
 };

@@ -19,7 +19,7 @@ router.post('/', async (req, res, next) => {
        description: req.body.description,
      }
     try {
-        await db.insert(newRes, projectId)
+        await db.add(newRes, projectId)
         res.sendStatus(201)
     } catch(err) {
         next(err)

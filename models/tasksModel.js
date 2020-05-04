@@ -10,11 +10,11 @@ async function getTasks(id){
         return tasks
     };
 
-async function add(id, data){
+async function add(id, info){
         return await db('tasks')
             .insert({
-                description: data.description,
-                notes: data.notes,
+                description: info.description,
+                notes: info.notes,
                 project_id: id
             })  
     }

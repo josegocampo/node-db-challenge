@@ -49,7 +49,7 @@ To differentiate rows between each others. Specially for unique and important ro
 
 - [ ] What is the name given to a table column that references the primary key on another table.
 
-Foreign Key
+Foreign Key.
 
 - [ ] What do we need in order to have a _many to many_ relationship between two tables.
 

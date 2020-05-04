@@ -16,7 +16,7 @@ server.use('/resources/:id/projects', rpRoute)
 server.use((err, req, res, next) => {
 	console.log(err)
 	res.status(500).json({
-        message: "Something went wrong",
+        message: "Something went terribly wrong!",
 	})
 })
 

@@ -19,10 +19,28 @@ async function add(data){
         })
     }
 
+ async function remove(id) {
+    return db('projects')
+      .where('id', id)
+      .del();
+  }   
+
+async function addRes(projectId, resoName, resoInfo){
+  
+  return await db('project_resources')  
+  .insert({
+      project_Id: projectId,
+      resource_Id: resoName,
+      resource_quantity: resoInfo.quantity
+  })
+}
+
 
 
     module.exports = {
         getAll,
         getById,
         add,
+        remove,
+        addRes
     };

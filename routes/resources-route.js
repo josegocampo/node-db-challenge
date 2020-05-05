@@ -12,15 +12,17 @@ router.get('/', async (req, res, next)=>{
     }
 })
 
+router.get('/:id', async (req, res, next)=>{
+    try{
+        res.json(await db.getById(req.params.id))
+    } catch(err){
+        next(err)
+    }
+})
+
 router.post('/', async (req, res, next) => {
-    const projectId = req.body.project_id
-    const newRes = {
-       name: req.body.name,
-       description: req.body.description,
-     }
     try {
-        await db.add(newRes, projectId)
-        res.sendStatus(201)
+        res.json(await db.add(req.body))
     } catch(err) {
         next(err)
     }
